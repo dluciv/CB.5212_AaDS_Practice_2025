@@ -37,4 +37,4 @@ jobs:
       - name: Собираем программу
         run: |
           cd 00.CI_example
-          clang ./build.sh
+          ./build.sh
