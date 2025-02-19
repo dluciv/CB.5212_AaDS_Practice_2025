@@ -1,0 +1,40 @@
+# Что за Workflow
+name: "Builg & Test"
+
+# Когда он запускается
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  setup_and_build:
+    name: Настройка и запуск билда
+    # Контейнер, в котором запускается задание
+    runs-on: ubuntu-latest
+
+    # Шаги задания
+    steps:
+      - name: Печать окружения. Окружение — это интересно.
+        run: env
+
+      # Егор Тенсин кстати учился на Матмехе СПбГУ
+      - name: Установка Clang
+        uses: egor-tensin/setup-clang@v1
+        with:
+          version: latest
+          platform: x64
+
+      - name: Установка make и некоторых других инструментов
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential
+
+      - name: Берём исходники из Гита
+        uses: actions/checkout@v4
+
+      - name: Собираем программу
+        run: |
+          cd 00.CI_example
+          clang ./build.sh
