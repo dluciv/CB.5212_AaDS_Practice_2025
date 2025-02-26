@@ -23,7 +23,7 @@ jobs:
         python_version:
           - 3.12
         gcc_version:
-          - 14.2
+          - 13.2
         exercise:
           - 00.CI_example
 
@@ -34,6 +34,11 @@ jobs:
       - name: Печать окружения. Окружение — это интересно.
         run: env
 
+      - name: Установка make и некоторых других инструментов
+        run: |
+          sudo apt-get update
+          sudo apt-get install build-essential
+
       # Егор Тенсин учился на Матмехе СПбГУ
       - name: Set up GCC
         uses: egor-tensin/setup-gcc@v1
@@ -41,12 +46,8 @@ jobs:
           version: "${{ matrix.gcc_version }}"
           platform: x64
 
-      - name: Установка make и некоторых других инструментов
-        run: |
-          sudo apt-get update
-          sudo apt-get install build-essential
-
-      - uses: actions/setup-python@v5
+      - name: Установка Питона (или Пайтона?..)
+        uses: actions/setup-python@v5
         with:
           python-version: "${{ matrix.python_version }}"
 
