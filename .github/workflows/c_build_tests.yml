@@ -4,26 +4,41 @@ name: "Builg & Test"
 # Когда он запускается
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - "*"
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - "*"
 
 jobs:
-  setup_and_build:
+  build:
     name: Настройка и запуск билда
     # Контейнер, в котором запускается задание
-    runs-on: ubuntu-latest
+
+    # Разные сочетания для проверки
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        python_version:
+          - 3.12
+        gcc_version:
+          - 14.2
+        exercise:
+          - 00.CI_example
+
+    runs-on:  "${{ matrix.os }}"
 
     # Шаги задания
     steps:
       - name: Печать окружения. Окружение — это интересно.
         run: env
 
-      # Егор Тенсин кстати учился на Матмехе СПбГУ
-      - name: Установка Clang
-        uses: egor-tensin/setup-clang@v1
+      # Егор Тенсин учился на Матмехе СПбГУ
+      - name: Set up GCC
+        uses: egor-tensin/setup-gcc@v1
         with:
-          version: latest
+          version: "${{ matrix.gcc_version }}"
           platform: x64
 
       - name: Установка make и некоторых других инструментов
@@ -31,10 +46,22 @@ jobs:
           sudo apt-get update
           sudo apt-get install build-essential
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "${{ matrix.python_version }}"
+
       - name: Берём исходники из Гита
         uses: actions/checkout@v4
 
       - name: Собираем программу
         run: |
-          cd 00.CI_example
+          cd ${{ matrix.exercise }}
           ./build.sh
+          ./test.sh
+          cd ..
+
+      - name: Тестируем программу
+        run: |
+          cd ${{ matrix.exercise }}
+          ./test.sh
+          cd ..
