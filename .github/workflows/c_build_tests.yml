@@ -26,6 +26,7 @@ jobs:
           - 12
         exercise:
           - 00.CI_example
+          - 01.ASCII85_task
 
     runs-on:  "${{ matrix.os }}"
 
@@ -39,7 +40,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install build-essential
 
-      - name: Инсталляция GCC
+      - name: Установка GCC
         uses: Dup4/actions-setup-gcc@v1
         with:
           version: "${{ matrix.gcc_version }}"

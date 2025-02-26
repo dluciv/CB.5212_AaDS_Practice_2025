@@ -2,4 +2,4 @@
 
 set -e
 
-gcc test.c
+./ascii85

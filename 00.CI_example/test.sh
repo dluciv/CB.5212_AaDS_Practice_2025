@@ -1,7 +1,9 @@
 #!/bin/bash
 
+set -e
+
+./a.out
 python3 --version
 g++ --version
 
-echo Всё неплохо
-exit 0
+echo Вроде всё неплохо
