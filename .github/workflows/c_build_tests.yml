@@ -23,7 +23,7 @@ jobs:
         python_version:
           - 3.12
         gcc_version:
-          - latest
+          - 12.3.0
         exercise:
           - 00.CI_example
 
