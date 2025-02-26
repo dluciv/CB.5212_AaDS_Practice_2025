@@ -23,7 +23,7 @@ jobs:
         python_version:
           - 3.12
         gcc_version:
-          - 13.2
+          - latest
         exercise:
           - 00.CI_example
 
@@ -39,12 +39,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install build-essential
 
-      # Егор Тенсин учился на Матмехе СПбГУ
-      - name: Set up GCC
-        uses: egor-tensin/setup-gcc@v1
+      - name: Инсталляция GCC
+        uses: Dup4/actions-setup-gcc@v1
         with:
           version: "${{ matrix.gcc_version }}"
-          platform: x64
 
       - name: Установка Питона (или Пайтона?..)
         uses: actions/setup-python@v5
