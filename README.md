@@ -1,1 +1,1 @@
-Результаты билда и тестов: ![Результат билда и тестов](https://github.com/dluciv/_tmp_2025-02-19_16-13_/actions/workflows/c_build_tests.yml/badge.svg)
+Результаты билда и тестов: ![Результат билда и тестов](https://github.com/dluciv/CB.5212_AaDS_Practice_2025/actions/workflows/c_build_tests.yml/badge.svg)
