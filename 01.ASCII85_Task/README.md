@@ -1,6 +1,6 @@
 # 1. (Де)кодер ASCII85
 
-Задача, написать (де)кодер [ASCII85](https://en.wikipedia.org/wiki/Ascii85).
+Задача — написать (де)кодер [ASCII85](https://en.wikipedia.org/wiki/Ascii85).
 
 Работать должен примерно как стандартная для Unix утилита: `base64`
 
