@@ -1,0 +1,33 @@
+1. (Де)кодер ASCII85
+====================
+
+Задача, написать (де)кодер [ASCII85](https://en.wikipedia.org/wiki/Ascii85).
+
+Работать должен примерно как стандартная для Unix утилита: `base64`
+
+```
+$ ascii85    # читает байты из STDIN и выдаёт ASCII85 в STDOUT
+$ ascii85 -e # то же самое
+$ ascii85 -d # читает ASCII85 из STDIN и выдаёт байты в STDOUT; при ощбке завершается с кодом, отличным от 0
+```
+
+`STDIN` следует читать постепенно, позволяя работать с данными произволной длины, и постепенно же выдавать данные в `STDOUT`.
+Для этого можно использовать [`basic_istream::read`](https://en.cppreference.com/w/cpp/io/basic_istream/read),
+а для побайтовой записи — [`basic_ostream::write`](https://en.cppreference.com/w/cpp/io/basic_ostream/write)
+
+Задачи:
+
+1.1. Сам декодер
+----------------
+
+1.2. Unit-тесты
+---------------
+
+Использовать [GoogleTest](https://github.com/google/googletest) на небольших наборах данных.
+Для имитации «картоного» ввода-вывода можно использовать [gMock](https://google.github.io/googletest/gmock_for_dummies.html).
+
+1.3. Тесты на случайных данных
+------------------------------
+
+Отдельные тесты, которые проверяют работу готового (де)кодера при помощи [соответствующих функций](https://docs.python.org/3/library/base64.html#base64.a85encode)
+модуля `base64` стандартной библиотеки Python.
