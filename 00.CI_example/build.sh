@@ -11,4 +11,4 @@ g++ -c example.cc
 g++ -c lib_test.cc
 
 g++ -o example example.o lib.o
-g++ -o example_test -lgtest lib_test.o lib.o
+g++ -o example_test -lgtest -lgtest_main -lpthread lib_test.o lib.o
