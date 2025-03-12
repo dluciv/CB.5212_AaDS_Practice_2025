@@ -6,9 +6,16 @@ rm example_test example *.o 2>/dev/null
 
 set -e
 
-g++ -c lib.cc
-g++ -c example.cc
-g++ -c lib_test.cc
+if [[ -n "$GITHUB_ENV" ]]; then
+  source $GITHUB_ENV
+  CCOPT=$CCOPT -I$GTEST_INCLUDE_DIRS -L$GTEST_BOTH_LIBRARIES
+fi
 
-g++ -o example example.o lib.o
-g++ -o example_test -lgtest lib_test.o lib.o
+echo CCOPT: $CCOPT
+
+g++ $CCOPT -c lib.cc
+g++ $CCOPT -c example.cc
+g++ $CCOPT -c lib_test.cc
+
+g++ $CCOPT -o example example.o lib.o
+g++ $CCOPT -o example_test -lgtest lib_test.o lib.o
