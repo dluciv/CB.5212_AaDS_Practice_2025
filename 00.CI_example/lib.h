@@ -9,7 +9,7 @@ void greet();
 class C
 {
 public:
-    virtual void do_smth() = 0;
+    virtual int do_smth(int) = 0;
 };
 
 #endif //_LIB_H_

@@ -8,15 +8,15 @@
 class MockC: public C
 {
 public:
-    MOCK_METHOD0(void, do_smth, (), (override));
+    MOCK_METHOD(int, do_smth, (int), (override));
 };
 
 TEST(LibTest, MockTest) {
     MockC m;
 
-    EXPECT_CALL(m, do_smth())
+    EXPECT_CALL(m, do_smth(1))
         .Times(1)
-        .WillOnce(testing::Return());
+        .WillOnce(::testing::Return(2));
 
-    m.do_smth();
+    EXPECT_EQ(m.do_smth(1), 2);
 }
