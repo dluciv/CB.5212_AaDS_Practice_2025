@@ -3,6 +3,6 @@
 
 int main()
 {
-    greet(std::cout);
+    greet();
     return 0;
 }

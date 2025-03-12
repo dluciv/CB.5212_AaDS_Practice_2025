@@ -4,7 +4,6 @@
 #include <string>
 
 const std::string who_am_i();
-void greet(std::ostream &ost);
-void writesmth(std::ostream &ost);
+void greet();
 
 #endif //_LIB_H_
