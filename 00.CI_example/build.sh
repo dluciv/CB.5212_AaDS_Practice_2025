@@ -8,8 +8,9 @@ set -e
 
 if [[ -n "$GITHUB_ENV" ]]; then
   source $GITHUB_ENV
-  CCOPT=$CCOPT -I$GTEST_INCLUDE_DIRS -L$GTEST_BOTH_LIBRARIES
 fi
+
+find gtest_install
 
 echo CCOPT: $CCOPT
 

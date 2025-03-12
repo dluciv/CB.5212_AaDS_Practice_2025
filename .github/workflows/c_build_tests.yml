@@ -45,9 +45,10 @@ jobs:
           version: "${{ matrix.gcc_version }}"
 
       - name: Установка GoogleTest
-        uses: Bacondish2023/setup-googletest@v1
+        uses: LazyPanda07/get-gtest@v1.1
         with:
-          tag: "v${{ matrix.gtest_version }}"
+          branch-name: "v${{ matrix.gtest_version }}"
+          install-path: gtest_install
 
       - name: Установка Питона (или Пайтона?..)
         uses: actions/setup-python@v5
