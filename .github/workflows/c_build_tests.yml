@@ -63,7 +63,7 @@ jobs:
           echo '=================== Содержимое GITHUB_ENV ====================='
           cat $CGITHUB_ENV
           echo '==================== Окружение в итоге ========================'
-          source $CGITHUB_ENV
+          source $GITHUB_ENV
           env
 
       - name: Собираем программу
