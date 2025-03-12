@@ -18,4 +18,4 @@ g++ $CCFLAGS -c lib.cc
 g++ $CCFLAGS -c lib_test.cc
 
 # g++ -o example example.o lib.o
-g++ $LDFLAGS -o example_test lib_test.o lib.o
+g++ -o example_test lib_test.o lib.o $LDFLAGS
