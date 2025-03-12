@@ -10,8 +10,9 @@ if [[ -n "$GITHUB_ENV" ]]; then
   source $GITHUB_ENV
 fi
 
-find .
-# gtest_install
+WD=$(pwd)
+
+CCOPT=$CCOPT -I$WD/gtest_install/include -L$WD/gtest_install/lib
 
 echo CCOPT: $CCOPT
 
