@@ -24,6 +24,8 @@ jobs:
           - 3.12
         gcc_version:
           - 12
+        gtest_version:
+          - 1.16.0
         exercise:
           - 00.CI_example
           - 01.ASCII85_Task
@@ -32,9 +34,6 @@ jobs:
 
     # Шаги задания
     steps:
-      - name: Печать окружения. Окружение — это интересно.
-        run: env
-
       - name: Установка make и некоторых других инструментов
         run: |
           sudo apt-get update
@@ -45,6 +44,11 @@ jobs:
         with:
           version: "${{ matrix.gcc_version }}"
 
+      - name: Установка GoogleTest
+        uses: Bacondish2023/setup-googletest@v1
+        with:
+          tag: "v${{ matrix.gtest_version }}"
+
       - name: Установка Питона (или Пайтона?..)
         uses: actions/setup-python@v5
         with:
@@ -52,6 +56,9 @@ jobs:
 
       - name: Берём исходники из Гита
         uses: actions/checkout@v4
+
+      - name: Печать окружения. Окружение — это интересно.
+        run: env
 
       - name: Собираем программу
         run: |
