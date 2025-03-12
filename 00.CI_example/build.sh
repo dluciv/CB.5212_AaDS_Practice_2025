@@ -6,9 +6,9 @@ rm example_test example *.o 2>/dev/null
 
 set -e
 
-COMMONFLAGS=-Werror -Wpedantic -Wall -std=c++17
-CCFLAGS=$COMMONFLAGS $(pkgconf --cflags gtest)
-LDFLAGS=$COMMONFLAGS $(pkgconf --libs gtest) -pthread
+COMMONFLAGS="-Werror -Wpedantic -Wall -std=c++17"
+CCFLAGS="${COMMONFLAGS} $(pkgconf --cflags gtest)"
+LDFLAGS="${COMMONFLAGS} $(pkgconf --libs gtest) -pthread"
 
 echo "CCFLAGS: $CCFLAGS"
 echo "LDFLAGS: $LDFLAGS"
