@@ -6,25 +6,9 @@ rm example_test example *.o 2>/dev/null
 
 set -e
 
-if [[ -n "$GITHUB_ENV" ]]; then
-  source $GITHUB_ENV
-fi
+g++ -c lib.cc
+g++ -c example.cc
+g++ -c lib_test.cc
 
-GTEST_HOME="$HOME/gtest_install"
-
-echo '==================================='
-cat /home/runner/gtest_install/lib/pkgconfig/gtest.pc
-echo '==================================='
-find $GTEST_HOME
-echo '==================================='
-
-CCOPT="-I${GTEST_HOME}/include -L${GTEST_HOME}/lib"
-
-echo CCOPT: $CCOPT
-
-g++ $CCOPT -c lib.cc
-g++ $CCOPT -c example.cc
-g++ $CCOPT -c lib_test.cc
-
-g++ $CCOPT -o example example.o lib.o
-g++ $CCOPT -o example_test -lgtest lib_test.o lib.o
+g++ -o example example.o lib.o
+g++ -o example_test -lgtest lib_test.o lib.o

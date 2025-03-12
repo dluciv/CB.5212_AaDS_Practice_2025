@@ -24,8 +24,6 @@ jobs:
           - 3.12
         gcc_version:
           - 12
-        gtest_version:
-          - 1.16.0
         exercise:
           - 00.CI_example
           - 01.ASCII85_Task
@@ -37,18 +35,12 @@ jobs:
       - name: Установка make и некоторых других инструментов
         run: |
           sudo apt-get update
-          sudo apt-get install build-essential
+          sudo apt-get install build-essential libgtest-dev
 
       - name: Установка GCC
         uses: Dup4/actions-setup-gcc@v1
         with:
           version: "${{ matrix.gcc_version }}"
-
-      - name: Установка GoogleTest
-        uses: LazyPanda07/get-gtest@v1.1
-        with:
-          branch-name: "v${{ matrix.gtest_version }}"
-          install-path: ../../../gtest_install
 
       - name: Установка Питона (или Пайтона?..)
         uses: actions/setup-python@v5
