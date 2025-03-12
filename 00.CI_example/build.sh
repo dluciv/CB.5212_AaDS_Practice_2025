@@ -12,6 +12,10 @@ fi
 
 GTEST_HOME=/home/runner/work/CB.5212_AaDS_Practice_2025/CB.5212_AaDS_Practice_2025/gtest_install
 
+echo '==================================='
+find $GTEST_HOME
+echo '==================================='
+
 CCOPT="-I${GTEST_HOME}/include -L${GTEST_HOME}/lib"
 
 echo CCOPT: $CCOPT
