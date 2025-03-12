@@ -13,6 +13,8 @@ fi
 GTEST_HOME="$HOME/gtest_install"
 
 echo '==================================='
+cat /home/runner/gtest_install/lib/pkgconfig/gtest.pc
+echo '==================================='
 find $GTEST_HOME
 echo '==================================='
 
