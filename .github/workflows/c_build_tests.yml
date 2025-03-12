@@ -58,7 +58,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Печать окружения. Окружение — это интересно.
-        run: env
+        run: |
+          echo GITHUB_ENV: $GITHUB_ENV
+          echo '=================== Содержимое GITHUB_ENV ====================='
+          cat $CGITHUB_ENV
+          echo '==================== Окружение в итоге ========================'
+          source $CGITHUB_ENV
+          env
 
       - name: Собираем программу
         run: |
