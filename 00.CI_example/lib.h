@@ -6,4 +6,10 @@
 const std::string who_am_i();
 void greet();
 
+class C
+{
+public:
+    virtual void do_smth() = 0;
+};
+
 #endif //_LIB_H_
