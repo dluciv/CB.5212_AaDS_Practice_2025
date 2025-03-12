@@ -10,7 +10,8 @@ if [[ -n "$GITHUB_ENV" ]]; then
   source $GITHUB_ENV
 fi
 
-find gtest_install
+find .
+# gtest_install
 
 echo CCOPT: $CCOPT
 
