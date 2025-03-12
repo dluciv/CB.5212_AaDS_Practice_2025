@@ -10,9 +10,9 @@ if [[ -n "$GITHUB_ENV" ]]; then
   source $GITHUB_ENV
 fi
 
-WD=$(pwd)
+GTEST_HOME=/home/runner/work/CB.5212_AaDS_Practice_2025/CB.5212_AaDS_Practice_2025/gtest_install
 
-CCOPT=$CCOPT -I$WD/gtest_install/include -L$WD/gtest_install/lib
+CCOPT=$CCOPT -I$GTEST_HOME/include -L$GTEST_HOME/lib
 
 echo CCOPT: $CCOPT
 
