@@ -48,7 +48,7 @@ jobs:
         uses: LazyPanda07/get-gtest@v1.1
         with:
           branch-name: "v${{ matrix.gtest_version }}"
-          install-path: gtest_install
+          install-path: ../../../gtest_install
 
       - name: Установка Питона (или Пайтона?..)
         uses: actions/setup-python@v5
