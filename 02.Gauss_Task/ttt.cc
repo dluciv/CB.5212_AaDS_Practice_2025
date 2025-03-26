@@ -23,8 +23,8 @@ int main() {
 
     // Редактирование на месте
     double c = 2.0;
-    A.row(0) += c * mat.row(1);
-    А.coeffRef(1, 1) += B.coeff(1, 1);
+    A.row(0) += c * A.row(1);
+    А.coeffRef(1, 1) -= B.coeff(1, 1);
     std::cout << "Новая матрица A:\n" << A << "\n\n";
 
     return 0;
