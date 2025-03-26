@@ -1,7 +1,37 @@
 #include <iostream>
+#include <string>
+#include <istream>
+#include <vector>
+#include <typeinfo>
+
 #include <Eigen/Dense>
+#include <glaze/csv.hpp>
+
+struct gauss_matrix {
+    std::vector<std::vector<double>> data{};
+};
 
 int main() {
+    // https://stackoverflow.com/a/2602060/539470
+    std::ifstream file("AB.csv");
+    std::string abcsv(
+        (std::istreambuf_iterator<char>(file)),
+        std::istreambuf_iterator<char>()
+    );
+    std::cout << abcsv << std::endl;
+
+    // glaze
+    // auto csv = glz::read_csv<glz::rowwise, std::vector<std::vector<double> > >(abcsv);
+    // std::cout << typeid(csv).name() << csv << std::endl;
+    gauss_matrix m;
+    auto r = glz::read_csv<glz::rowwise>(m, abcsv);
+    for(auto r: m.data) {
+        for(auto e: r)
+            std::cout << e << ' ';
+        std::cout << std::endl;
+    }
+    std::cout << typeid(r).name() << std::endl;
+
     // Создаем матрицы с использованием Eigen
     Eigen::Matrix<double, -1, -1, Eigen::RowMajor> A(2, 3);
     A << 1, 2, 3,
