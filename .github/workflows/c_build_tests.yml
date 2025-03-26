@@ -51,6 +51,9 @@ jobs:
       - name: Берём исходники из Гита
         uses: actions/checkout@v4
 
+      - name: Подмодули Git
+        run: git submodule update --init
+
       - name: Печать окружения. Окружение — это интересно.
         run: |
           echo GITHUB_ENV: $GITHUB_ENV
