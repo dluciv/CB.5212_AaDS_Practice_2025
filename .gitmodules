@@ -1,0 +1,4 @@
+[submodule "externals/glaze"]
+	path = externals/glaze
+	url = https://github.com/stephenberry/glaze.git
+	branch = v5.0.1
