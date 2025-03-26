@@ -27,6 +27,7 @@ jobs:
         exercise:
           - 00.CI_example
           - 01.ASCII85_Task
+          - 02.Gauss_Task
 
     runs-on:  "${{ matrix.os }}"
 
@@ -35,7 +36,7 @@ jobs:
       - name: Установка make и некоторых других инструментов
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential libgtest-dev libgmock-dev
+          sudo apt-get install -y build-essential libgtest-dev libgmock-dev libeigen3-dev libopenblas-dev
 
       - name: Установка GCC
         uses: Dup4/actions-setup-gcc@v1
