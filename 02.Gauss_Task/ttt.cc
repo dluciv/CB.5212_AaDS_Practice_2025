@@ -16,7 +16,7 @@ int main() {
             std::vector<double> r{};
             for (const auto cell : row)
             {
-                r.push_back(std::stod(std::string(to_double(cell.raw()))));
+                r.push_back(std::stod(std::string(cell.raw())));
             }
             rcsv.push_back(r);
         }
