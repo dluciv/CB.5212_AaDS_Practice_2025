@@ -2,7 +2,7 @@
 
 rm a.out &>/dev/null
 
-CCOPT="--std=c++23 $(pkgconf --cflags eigen3 openblas) -I../externals/glaze/include -D EIGEN_USE_BLAS -D EIGEN_USE_LAPACKE"
+CCOPT="--std=c++23 $(pkgconf --cflags eigen3 openblas) -I../externals/lazycsv/include -D EIGEN_USE_BLAS -D EIGEN_USE_LAPACKE"
 LDOPT="$(pkgconf --libs eigen3 openblas)"
 
 g++ $CCOPT  ttt.cc $LDOPT
